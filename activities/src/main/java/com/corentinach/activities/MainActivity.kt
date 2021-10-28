@@ -3,11 +3,13 @@ package com.corentinach.activities
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var clickButton: Button
+    private lateinit var textView: TextView
     private var nbClick = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         clickButton = findViewById(R.id.btn_click_me)
         clickButton.setOnClickListener(this)
+        textView = findViewById(R.id.text_view)
     }
 
     override fun onClick(v: View?) {
@@ -22,5 +25,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         nbClick++
         val newText = "Cliquez moi $nbClick"
         clickButton.text = newText
+        textView.text = "Vous avez cliqué $nbClick fois"
+
+        if (nbClick > 4) {
+            clickButton.isEnabled = false
+        }
     }
 }
