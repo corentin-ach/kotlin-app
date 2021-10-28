@@ -1,5 +1,6 @@
 package com.corentinach.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var clickButton: Button
+    private lateinit var computeButton: Button
     private lateinit var textView: TextView
     private var nbClick = 0
 
@@ -18,6 +20,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         clickButton = findViewById(R.id.btn_click_me)
         clickButton.setOnClickListener(this)
         textView = findViewById(R.id.text_view)
+        computeButton = findViewById(R.id.btn_compute)
+        computeButton.setOnClickListener {
+            val intent = Intent(baseContext, ComputeActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onClick(v: View?) {
