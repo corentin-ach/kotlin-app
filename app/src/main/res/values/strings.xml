@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ApplicationTP</string>
+    <string name="text_hello">Bonjour le monde</string>
+</resources>
