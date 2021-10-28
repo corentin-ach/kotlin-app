@@ -30,9 +30,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        val link =
-            "https://images.unsplash.com/photo-1635356178382-7f5c1de673c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=773&q=80"
-        loadImage(link)
+        val links = mutableListOf(
+            "https://images.unsplash.com/photo-1635356178382-7f5c1de673c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=773&q=80",
+            "https://images.unsplash.com/photo-1635179210313-6a16eab501fc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+            "https://images.unsplash.com/photo-1625853346822-dd6a63641b1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        )
+        loadImage(links.random())
         Toast.makeText(this, "You click me", Toast.LENGTH_LONG).show()
     }
 }
