@@ -6,7 +6,7 @@ class DummyNeighborApiService : NeighborApiService {
         get() = DUMMY_NeighborS
 
     override fun deleteNeighbour(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+        DUMMY_NeighborS.remove(neighbor)
     }
 
     override fun createNeighbour(neighbor: Neighbor) {
@@ -21,10 +21,10 @@ class DummyNeighborApiService : NeighborApiService {
         TODO("Not yet implemented")
     }
 
-    private val DUMMY_NeighborS: List<Neighbor> = listOf(
+    private var DUMMY_NeighborS: MutableList<Neighbor> = mutableListOf(
         Neighbor(
             1, "Caroline",
-            "https://i.picsum.photos/id/1011/5472/3648.jpg?hmac=Koo9845x2akkVzVFX3xxAc9BCkeGYA9VRVfLE4f0Zzk",
+            "https://images.unsplash.com/photo-1595516007576-3832e048c30c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
             "Saint-Pierre-du-Mont ; 5km",
             "+33 6 86 57 90 14",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
