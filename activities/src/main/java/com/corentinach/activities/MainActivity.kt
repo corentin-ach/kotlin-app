@@ -7,21 +7,19 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.corentinach.activities.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var clickButton: Button
-    private lateinit var computeButton: Button
-    private lateinit var textView: TextView
+
     private var nbClick = 0
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        clickButton = findViewById(R.id.btn_click_me)
-        clickButton.setOnClickListener(this)
-        textView = findViewById(R.id.text_view)
-        computeButton = findViewById(R.id.btn_compute)
-        computeButton.setOnClickListener {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.btnClickMe.setOnClickListener(this)
+        binding.btnCompute.setOnClickListener {
             val intent = Intent(baseContext, ComputeActivity::class.java)
             startActivity(intent)
         }
@@ -31,11 +29,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(baseContext, "Tu m'as cliqué", Toast.LENGTH_LONG).show()
         nbClick++
         val newText = "Cliquez moi $nbClick"
-        clickButton.text = newText
-        textView.text = getString(R.string.you_have_clicked, nbClick)
+        binding.btnClickMe.text = newText
+        binding.textView.text = getString(R.string.you_have_clicked, nbClick)
 
         if (nbClick > 4) {
-            clickButton.isEnabled = false
+            binding.btnClickMe.isEnabled = false
         }
     }
 
