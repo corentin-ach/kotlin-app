@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         nbClick++
         val newText = "Cliquez moi $nbClick"
         clickButton.text = newText
-        textView.text = "Vous avez cliqué $nbClick fois"
+        textView.text = getString(R.string.you_have_clicked, nbClick)
 
         if (nbClick > 4) {
             clickButton.isEnabled = false
