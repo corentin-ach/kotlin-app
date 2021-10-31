@@ -10,21 +10,23 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.corentinach.neighbors.R
+import com.corentinach.neighbors.NavigationListener
 import com.corentinach.neighbors.adapters.ListNeighborHandler
 import com.corentinach.neighbors.adapters.ListNeighborsAdapter
 import com.corentinach.neighbors.data.NeighborRepository
+import com.corentinach.neighbors.databinding.ListNeighborsFragmentBinding
 import com.corentinach.neighbors.models.Neighbor
 
 class ListNeighborsFragment : Fragment(), ListNeighborHandler {
     private lateinit var recyclerView: RecyclerView
+    private lateinit var binding: ListNeighborsFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.list_neighbors_fragment, container, false)
-        recyclerView = view.findViewById(R.id.neighbors_list)
+        binding = ListNeighborsFragmentBinding.inflate(inflater, container, false)
+        recyclerView = binding.neighborsList
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -32,7 +34,12 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
                 DividerItemDecoration.VERTICAL
             )
         )
-        return view
+        binding.addNeighbor.setOnClickListener {
+            (activity as? NavigationListener)?.let {
+                it.showFragment(AddNeighbourFragment())
+            }
+        }
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
