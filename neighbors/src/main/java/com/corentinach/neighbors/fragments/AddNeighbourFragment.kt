@@ -28,9 +28,9 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
             }
             return view
         }
-        /*(activity as? NavigationListener)?.let {
+        (activity as? NavigationListener)?.let {
             it.updateTitle(R.string.new_neighbor)
-        }*/
+        }
     }
 
     private fun saveNeighbor(view: View) {

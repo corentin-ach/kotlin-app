@@ -40,9 +40,9 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
                 it.showFragment(AddNeighbourFragment())
             }
         }
-        /*(activity as? NavigationListener)?.let {
+        (activity as? NavigationListener)?.let {
             it.updateTitle(R.string.all_list)
-        }*/
+        }
         return binding.root
     }
 

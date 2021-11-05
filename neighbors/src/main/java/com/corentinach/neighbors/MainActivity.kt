@@ -7,13 +7,13 @@ import androidx.fragment.app.Fragment
 import com.corentinach.neighbors.fragments.ListNeighborsFragment
 
 class MainActivity : AppCompatActivity(), NavigationListener {
-    // private lateinit var toolbar: Toolbar
+    private lateinit var toolbar: Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        /*toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)*/
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
         showFragment(ListNeighborsFragment())
     }
 
@@ -24,11 +24,7 @@ class MainActivity : AppCompatActivity(), NavigationListener {
         }.commit()
     }
 
-    /*override fun updateTitle(title: Int) {
-        TODO("Not yet implemented")
-    }*/
-
-    /*override fun updateTitle(title: Int) {
+    override fun updateTitle(title: Int) {
         toolbar.setTitle(title)
-    }*/
+    }
 }
