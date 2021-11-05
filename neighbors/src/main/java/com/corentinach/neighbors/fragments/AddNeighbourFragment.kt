@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.corentinach.neighbors.R
 import com.corentinach.neighbors.data.NeighborRepository
 import com.corentinach.neighbors.databinding.AddNeighborBinding
 import com.corentinach.neighbors.models.Neighbor
 
 class AddNeighbourFragment : Fragment() {
     private lateinit var binding: AddNeighborBinding
-    private lateinit var saveButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,16 +18,16 @@ class AddNeighbourFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = AddNeighborBinding.inflate(inflater, container, false)
-        val view = inflater.inflate(R.layout.add_neighbor, container, false)
+        val view = binding.root
         with(binding) {
-            saveButton.setOnClickListener {
-                addNeighbor()
+            binding.btnSave.setOnClickListener {
+                sendForm(view)
             }
             return view
         }
     }
 
-    private fun addNeighbor() {
+    private fun sendForm(view: View) {
         with(binding) {
             val id = (NeighborRepository.getInstance().getNeighbours().size + 1)
             val name = nameInput.text.toString()
