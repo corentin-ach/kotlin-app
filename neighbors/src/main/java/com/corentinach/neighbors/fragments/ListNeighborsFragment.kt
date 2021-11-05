@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.corentinach.neighbors.NavigationListener
+import com.corentinach.neighbors.R
 import com.corentinach.neighbors.adapters.ListNeighborHandler
 import com.corentinach.neighbors.adapters.ListNeighborsAdapter
 import com.corentinach.neighbors.data.NeighborRepository
@@ -39,6 +40,9 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
                 it.showFragment(AddNeighbourFragment())
             }
         }
+        /*(activity as? NavigationListener)?.let {
+            it.updateTitle(R.string.all_list)
+        }*/
         return binding.root
     }
 
