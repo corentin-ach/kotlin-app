@@ -26,6 +26,9 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as? NavigationListener)?.let {
+            it.updateTitle(R.string.all_list)
+        }
         binding = ListNeighborsFragmentBinding.inflate(inflater, container, false)
         recyclerView = binding.neighborsList
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -39,9 +42,6 @@ class ListNeighborsFragment : Fragment(), ListNeighborHandler {
             (activity as? NavigationListener)?.let {
                 it.showFragment(AddNeighbourFragment())
             }
-        }
-        (activity as? NavigationListener)?.let {
-            it.updateTitle(R.string.all_list)
         }
         return binding.root
     }

@@ -20,6 +20,9 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as? NavigationListener)?.let {
+            it.updateTitle(R.string.new_neighbor)
+        }
         binding = AddNeighborBinding.inflate(inflater, container, false)
         val view = binding.root
         with(binding) {
@@ -27,9 +30,6 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
                 saveNeighbor(view)
             }
             return view
-        }
-        (activity as? NavigationListener)?.let {
-            it.updateTitle(R.string.new_neighbor)
         }
     }
 
