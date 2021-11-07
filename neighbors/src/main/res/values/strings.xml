@@ -2,5 +2,6 @@
     <string name="app_name">neighbors</string>
     <string name="all_list">Liste des voisins</string>
     <string name="new_neighbor">Nouveau voisin</string>
+    <string name="btn_save">Enregistrer</string>
 </resources>
 

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">neighbors</string>
+    <string name="all_list">Neighbors list</string>
+    <string name="new_neighbor">New neighbor</string>
+    <string name="btn_save">Save</string>
+
+</resources>
+
