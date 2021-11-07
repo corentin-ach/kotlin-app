@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.URLUtil
 import androidx.fragment.app.Fragment
 import com.corentinach.neighbors.NavigationListener
 import com.corentinach.neighbors.R
@@ -35,6 +36,8 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 
     private fun saveNeighbor(view: View) {
         with(binding) {
+            webInput.addTextChangedListener(this@AddNeighbourFragment)
+            imageInput.addTextChangedListener(this@AddNeighbourFragment)
             val id = (NeighborRepository.getInstance().getNeighbours().size + 1)
             val name = nameInput.text.toString()
             val image = imageInput.text.toString()
@@ -42,9 +45,22 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
             val telephone = telInput.text.toString()
             val description = aboutInput.text.toString()
             val webSite = webInput.text.toString()
+            var webInput = false
+            var imageInput = false
+            btnSave.isEnabled = false
             val neighbor =
                 Neighbor(id.toLong(), name, image, address, telephone, description, false, webSite)
-            NeighborRepository.getInstance().addNeighbor(neighbor)
+
+            if (URLUtil.isValidUrl(webSite)) {
+                webInput = true
+            } else binding.webLayout.error = "Erreur url"
+            if (URLUtil.isValidUrl(image)) {
+                imageInput = true
+            } else binding.imageLayout.error = "Erreur url"
+
+            if (webInput && imageInput) {
+                NeighborRepository.getInstance().addNeighbor(neighbor)
+            }
         }
     }
 
@@ -58,7 +74,10 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 
     override fun afterTextChanged(s: Editable?) {
         binding.btnSave.isEnabled =
-            binding.nameInput.text!!.isNotBlank() && binding.imageInput.text!!.isNotBlank() && binding.adressInput.text!!.isNotBlank() && binding.telInput.text!!.isNotBlank() && binding.aboutInput.text!!.isNotBlank() && binding.webInput.text!!.isNotBlank()
+            binding.nameInput.text.toString().isNotBlank() && binding.imageInput.text.toString()
+            .isNotBlank() && binding.telInput.text.toString()
+            .isNotBlank() && binding.webInput.text.toString()
+            .isNotBlank() && binding.aboutInput.text.toString()
+            .isNotBlank() && binding.adressInput.text.toString().isNotBlank()
     }
-
 }
