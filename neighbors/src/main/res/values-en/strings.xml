@@ -2,7 +2,13 @@
     <string name="app_name">neighbors</string>
     <string name="all_list">Neighbors list</string>
     <string name="new_neighbor">New neighbor</string>
-    <string name="btn_save">Save</string>
+    <string name="save_button">Save</string>
+    <string name="image">Image</string>
+    <string name="name">Name</string>
+    <string name="tel">Tel</string>
+    <string name="website">Website</string>
+    <string name="adress">Adress</string>
+    <string name="about_me">About me</string>
 
 </resources>
 
